@@ -42,8 +42,8 @@ static API_KEY: &str = "YOUR_API_KEY_HERE";
 
 fn main() 
 {
-    let loc = LocationSpecifier::CityAndCountryName{city:"Minneapolis", country:"USA"};
-    let weather = openweather::get_current_weather(loc, API_KEY).unwrap();
+    let loc = LocationSpecifier::CityAndCountryName{city:"Minneapolis".to_owned(), country:"USA".to_owned()};
+    let weather = openweather::get_current_weather(&loc, API_KEY, &openweather::Settings {unit: None, lang: None}).unwrap();
     println!("Right now in Minneapolis, MN it is {}K", weather.main.temp);
 }
 ```
